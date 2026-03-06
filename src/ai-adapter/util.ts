@@ -2,10 +2,10 @@ import { settings } from "../settings";
 import { Provider } from "./provider";
 import { OllamaProvider } from "./providers/ollamaProvider";
 import { GeminiProvider } from "./providers/geminiProvider";
+import { CohereProvider } from "./providers/cohereProvider";
 import { provider } from "./globals";
 import { Notice } from "obsidian";
 import { debugLog } from "../util";
-// import {ExampleProvider} from "./exampleProvider"; [NEW PROVIDER]
 
 const context = "ai-adapter/util";
 
@@ -15,15 +15,15 @@ export function initProvider(): Provider {
 		"Initializing provider: " + settings.aiAdapterSettings.provider,
 	);
 	switch (settings.aiAdapterSettings.provider) {
-		case "ollama": {
+		case "ollama":
 			return new OllamaProvider();
-		}
-		case "gemini": {
+		case "gemini":
 			return new GeminiProvider();
-		}
-		// case "testing": { [NEW PROVIDER]
-		// 	return new ExampleProvider();
-		// }
+		case "cohere":
+			return new CohereProvider();
+		default:
+			// Fallback if provider is missing/corrupted (e.g. from old settings)
+			return new OllamaProvider();
 	}
 }
 

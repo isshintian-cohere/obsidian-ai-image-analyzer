@@ -104,18 +104,24 @@ export const possibleModels: Models[] = [
 		imageReady: true,
 		provider: "ollama",
 	},
-	// { [NEW PROVIDER]
-	// 	name: "EXAMPLE IMAGE",
-	// 	model: "exampleimage",
-	// 	imageReady: true,
-	// 	provider: "testing",
-	// },
-	// {
-	// 	name: "TESTING",
-	// 	model: "test",
-	// 	imageReady: false,
-	// 	provider: "testing",
-	// },
+	{
+		name: "Command A Vision (07-2025)",
+		model: "command-a-vision-07-2025",
+		imageReady: true,
+		provider: "cohere",
+	},
+	{
+		name: "C4AI Aya Vision (32B)",
+		model: "c4ai-aya-vision-32b",
+		imageReady: true,
+		provider: "cohere",
+	},
+	{
+		name: "C4AI Aya Vision (8B)",
+		model: "c4ai-aya-vision-8b",
+		imageReady: true,
+		provider: "cohere",
+	},
 ];
 
 export let unsubscribeFunctionSetting: (() => void) | null = null;

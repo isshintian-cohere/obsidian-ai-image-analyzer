@@ -34,7 +34,24 @@ export let settings: AIImageAnalyzerPluginSettings = Object.assign(
 );
 
 export async function loadSettings(plugin: AIImageAnalyzerPlugin) {
-	settings = Object.assign({}, DEFAULT_SETTINGS, await plugin.loadData());
+	const loaded = (await plugin.loadData()) as Partial<
+		AIImageAnalyzerPluginSettings & {
+			aiAdapterSettings?: Partial<AIImageAnalyzerPluginSettings["aiAdapterSettings"]> & Record<string, unknown>;
+		}
+	> | null;
+	settings = Object.assign({}, DEFAULT_SETTINGS, loaded);
+	// Ensure nested defaults so new keys (e.g. cohereSettings) exist after plugin updates
+	const loadedAdapter = loaded?.aiAdapterSettings;
+	if (loadedAdapter && typeof loadedAdapter === "object") {
+		const def = DEFAULT_SETTINGS.aiAdapterSettings;
+		settings.aiAdapterSettings = {
+			...def,
+			...loadedAdapter,
+			ollamaSettings: { ...def.ollamaSettings, ...(loadedAdapter.ollamaSettings ?? {}) },
+			geminiSettings: { ...def.geminiSettings, ...(loadedAdapter.geminiSettings ?? {}) },
+			cohereSettings: { ...def.cohereSettings, ...(loadedAdapter.cohereSettings ?? {}) },
+		};
+	}
 }
 
 export async function saveSettings(plugin: AIImageAnalyzerPlugin) {

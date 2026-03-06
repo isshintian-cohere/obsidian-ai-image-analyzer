@@ -15,9 +15,12 @@ import {
 	DEFAULT_GEMINI_SETTINGS,
 	GeminiSettings,
 } from "./providers/geminiProvider";
+import {
+	DEFAULT_COHERE_SETTINGS,
+	CohereSettings,
+} from "./providers/cohereProvider";
 import AIImageAnalyzerPlugin from "../main";
 import { saveSettings, settings } from "../settings";
-// import {DEFAULT_EXAMPLE_SETTINGS, ExampleSettings} from "./exampleProvider"; [NEW PROVIDER]
 
 export type AIAdapterPluginSettings = {
 	provider: Providers;
@@ -25,7 +28,7 @@ export type AIAdapterPluginSettings = {
 	selectedImageModel: Models;
 	ollamaSettings: OllamaSettings;
 	geminiSettings: GeminiSettings;
-	// exampleSettings: ExampleSettings; [NEW PROVIDER]
+	cohereSettings: CohereSettings;
 };
 
 export const DEFAULT_SETTINGS: AIAdapterPluginSettings = {
@@ -34,7 +37,7 @@ export const DEFAULT_SETTINGS: AIAdapterPluginSettings = {
 	selectedImageModel: possibleModels[0],
 	ollamaSettings: DEFAULT_OLLAMA_SETTINGS,
 	geminiSettings: DEFAULT_GEMINI_SETTINGS,
-	// exampleSettings: DEFAULT_EXAMPLE_SETTINGS [NEW PROVIDER]
+	cohereSettings: DEFAULT_COHERE_SETTINGS,
 };
 
 export function generateSettings(
