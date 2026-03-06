@@ -21,9 +21,11 @@ interface AIImageAnalyzerPluginSettings {
 	aiAdapterSettings: AIAdapterPluginSettings;
 }
 
+const DEFAULT_PROMPT = "Describe the image concisely for text-based search engine. Output only the following fields:\n```\nTitle: <short descriptive title>\nKeywords: <comma-separated keywords or key phrases>\nDescription: <concise summary of key elements, max 100 words, no filler language>\n```\n";
+
 const DEFAULT_SETTINGS: AIImageAnalyzerPluginSettings = {
 	debug: false,
-	prompt: "Describe the image. Just use Keywords. For example: cat, dog, tree. This must be Computer readable. The provided pictures are used in an notebook. Please provide at least 5 Keywords. It will be used to search for the image later.",
+	prompt: DEFAULT_PROMPT,
 	autoClearCache: true,
 	aiAdapterSettings: AI_ADAPTER_DEFAULT_SETTINGS,
 };
