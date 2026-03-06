@@ -64,7 +64,7 @@ You can also modify the prompt in the settings.
 ## Installation
 
 This plugin is available on the [Obsidian community plugins repository](https://obsidian.md/plugins?id=ai-image-analyzer).
-You also can download the latest release from the GitHub [releases page](https://github.com/swaggeroo/obsidian-ai-image-analyser/releases) and install it manually in Obsidian.
+You also can download the latest release from the GitHub [releases page](https://github.com/swaggeroo/obsidian-ai-image-analyser/releases) and install it manually in Obsidian (run `npm run build`, copy `main.js` + `manifest.json` in project root to `YOUR_OBSIDIAN_VAULT_PATH/.obsidian/plugins/ai-image-analyzer`, reload community plugin and enable the plugin)
 
 ## Using AI image analyser as a dependency for your plugin
 
